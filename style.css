@@ -1,12 +1,16 @@
 body {
-margin-left: 5%;
-background-color: navy;
-color: white;
-padding-right: 5%;
+color:  black;
+
 }
 
 header {
 text-align: center;
 padding-top: 2%;
+
+}
+
+.content {
+text-align: center;
+
 
 }
