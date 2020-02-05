@@ -6,7 +6,9 @@ Project Description: A simple B2B sales tool that can pull in information for co
 
 User story: I am a salesperson for a B2B company and I want to quickly gather useful company information without spending a lot of time researching through different sources.
 
-Wireframe: 
+Mission: As a sales person working business to business in the world of today it is wise to do a little digging(ie. investigate pertinent information to your sales process) on any prospective business. While this is almost essential for some businesses and backgrounds it may be extra work for others, businesses, their owners and their aspects change all the time. We are creating an app to streamiline and expedite this process within a GOOGLE like search query. Once searched the most important aspects and details for the prospective business will be displayed for the user.
+
+Wireframe:
 
 APIs to be used: Clearbit, Crunchbase
 
