@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    
+
+
+</head>
+<body>
+
+    <div class="columns">
+            <div class="column">
+
+                    <section class="hero is-info is-bold hero-head">
+                            <div class="hero-body">
+                              <div class="container">
+                                <h1 class="title">
+                                The Simple B2B Company Finder</h1>
+                                <h2 class="subtitle">
+                                  The only tool your sales team will need! 
+                                </h2>
+                              </div>
+                            </div>
+                          </section>
+
+                          <br>
+                          <br>
+
+        <!-- Retrieved data will be dumped here -->
+
+        <div class="content">
+              
+                    
+        <div class='search'>
+         <h2><span>Search for Company</span></h2> <input id='companySearch' type="text" placeholder="Enter Company Name">
+         <br>
+         <br>
+         <button class="pure-button pure-button-primary button-large" id='srchBtn'>Search</button>
+        </div>
+
+        <br>
+
+        <div class='name'></div>
+        <div class='domainName'></div>
+        <div class='locations'></div>
+        <div class='stockexchange'></div>
+        <div class='stocksymbol'></div>
+        <div class='linkedin'></div>
+        <div class='description'></div>
+       
+        </div>
+</div>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        
+        <script type="text/javascript">
+          $('#srchBtn').on('click', function () {
+                // Crunchbase API Key
+                var APIKey = 'a4c82e5afba2b0d13219a4ffb25081a3';
+                var name = '';
+                var name = $('#companySearch').val();
+                console.log(name);
+                // URL we need to query the crunchbase
+                var queryURL = "https://api.crunchbase.com/v3.1/odm-organizations?" +
+                  "name=" + name + "&user_key=" + APIKey;
+                
+                  // Here we run our AJAX call to the OpenWeatherMap API
+                  $.ajax({
+                      url: queryURL,
+                      method: "GET"
+                    })
+                  // Store all of the retrieved data inside of an object called "response"
+                  .then(function (response) {
+      
+                    // Log the queryURL
+                    console.log(queryURL);
+      
+                    // Log the resulting object
+                    console.log(response);
+      
+                    // Transfer content to HTML
+                    $('.name').html("<h2>Company Name: " + response.data.items[0].properties.name + "</h2>");
+                    $('.domainName').text("Domain Name: " + response.data.items[0].properties.domain);
+                    $(".locations").text("Headquarter Location: " + response.data.items[0].properties.region_name + ', ' + response.data
+                      .items[0].properties.city_name);
+                    $('.stockexchange').text("Stock Exchange: " + response.data.items[0].properties.stock_exchange);
+                    $('.stocksymbol').text("Stock Symbol:" + response.data.items[0].properties.stock_symbol);
+                    $('.description').text("Description: " + response.data.items[0].properties.short_description);
+                    $('.linkedin').text("Since: " + response.data.items[0].properties.linkedin_url);
+                    $('.stocks').text("Stock Symbol:" + response.data.items[0].properties.stock_symbol);
+                            
+                    //Log the data in the console
+                    console.log("Company Name: " + response.data.items[0].properties.name);
+                    console.log("Domain Name: " + response.data.items[0].properties.domain);
+                    console.log("Region: " + response.data.items[0].properties.region_name);
+                    console.log("City: " + response.data.items[0].properties.city_name);
+                    console.log("Stock Exchange: " + response.data.items[0].properties.stock_exchange);
+                    console.log("Stock Symbol: " + response.data.items[0].properties.stock_symbol);
+                    console.log("Description: " + response.data.items[0].properties.short_description);
+                    console.log("LinkedIn URL: " + response.data.items[0].properties.linkedin_url);
+                  });
+                });
+        </script>
+        </div>
+      </body>
+      </html>
