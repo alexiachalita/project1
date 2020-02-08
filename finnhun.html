@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Finnhub</title>
+</head>
+
+<body>
+    <!-- Retrieved data will be dumped here -->
+    <div class='search'>
+     <h2><span>Search for Company</span></h2> <input id='symbolSearch' type="text" placeholder="Enter Company Name"><button id='srchBtn'>Search</button>
+     
+    </div>
+    
+    <div class='symbol'></div>
+    <div class='datetime'></div>
+    <div class='headline'></div>
+    <div class='stocks'></div>
+    <div class='description'></div>
+    <div></div>
+    <div class="freeOperatingRevenue5y"></div>
+    <div class="operatingRevenueTTM"></div>
+    <div class="grossMargin5y"></div>
+    <div class="grossMarginAnnual"></div>
+    <div class="grossMarginTTM"></div>
+    <div class="netProfitMargin&Annual"></div>
+    <div class="netProfitMargin5y"></div>
+    <div class="netProfitMarginTTM"></div>
+    <div class="operatingMargin5y"></div>
+    <div class="operatingMarginAnnual"></div>
+    <div class="operatingMarginTTM"></div>
+    <div class="preTaxMargin5y"></div>
+    <div class="pretaxMarginAnnual"></div>
+    <div class="pretaxMarginTTM"></div>
+
+
+    
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    
+    <script type="text/javascript">
+      $('#srchBtn').on('click', function () {
+            // Finnhub API Key
+            var APIKey = 'bot4m1vrh5reabqs9rk0';
+            var symbol = '';
+            var symbol = $('#symbolSearch').val();
+            console.log(symbol);
+            // URL we need to query the crunchbase
+            var queryURL = "https://finnhub.io/api/v1/major-development?symbol=" +
+              symbol + "&token=" + APIKey;
+            
+              // Here we run our AJAX call to the OpenWeatherMap API
+              $.ajax({
+                  url: queryURL,
+                  method: "GET"
+                })
+              // Store all of the retrieved data inside of an object called "response"
+              .then(function (response) {
+                // Log the queryURL
+                console.log(queryURL);
+                // Log the resulting object
+                console.log(response);
+                // Transfer content to HTML
+
+                var queryURLMetric = 'https://finnhub.io/api/v1/stock/metric?symbol=' + 
+                symbol + '&metric=margin&token=' + APIKey;
+
+                $.ajax({
+                        url: queryURLMetric,
+                        method: 'GET'
+                    })
+
+                    //Store data retreived inside object called response
+                    .then(function (metric) {
+                        //show queryURL UV
+                        console.log(JSON.parse(metric));
+                        //show object
+                        
+
+                    $('#freeOperatingRevenue5y').text("Operating Revenue: " + freeOperatingCashFlow/revenue5Y);
+
+                    })
+
+                $('.symbol').html("<h1>Symbol: " + response.symbol + "</h1>");
+                $('.datetime').text("Date: " + response.majorDevelopment[0].datetime);
+                $(".headline").text("Headline: " + response.majorDevelopment[0].headline);
+                $('.description').text("Description: " + response.majorDevelopment[0].description);
+               
+                        //Log the data in the console
+                console.log("Symbol: " + response.symbol);
+                console.log("Date: " + response.majorDevelopment[0].datetime);
+                console.log("Headline: " + response.majorDevelopment[0].headline);
+                console.log("Description: " + response.majorDevelopment[0].description);
+                
+              });
+              
+
+              
+            });
+    </script>
+  </body>
+  </html>
