@@ -134,8 +134,6 @@ $(document).ready(function () {
     console.log('Passed: ' + companyDomain + ' to renderCardFour');
     // URL we need to query the crunchbase
     var queryURL = 'https://api.hunter.io/v2/domain-search?domain=' + companyDomain + '&api_key=' + APIKey;
-
-
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
         url: queryURL,
@@ -146,12 +144,12 @@ $(document).ready(function () {
         // TESTING PURPOSE
         console.log(response);
         // Transfer content to HTML
-        //  $('.data').html("<h1>Contact Info: " + responseFour.data.organization + "</h1>");
+         $('.contacts').html("<h1>Contact Info: " + response.data.organization + "</h1>");
         //  $('.domain').text("Domain: " + responseFour.data.domain);
         //  $('.country').text("Country: " + responseFour.data.country);
         //  $('.state').text("State: " + responseFour.data.state);
         //  $('<br/>');
-
+       $('.emails').html(' ');
         for (var i = 0; i < response.data.emails.length; i++) {
           var p3 = $('<p>').text('Contact Name: ' + response.data.emails[i].first_name + ' ' + response.data.emails[i].last_name + ', Title: ' + response.data.emails[i].position + " Contact Email: " + response.data.emails[i].value);
 
