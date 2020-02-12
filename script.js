@@ -151,9 +151,12 @@ $(document).ready(function () {
         //  $('<br/>');
        $('.emails').html(' ');
         for (var i = 0; i < response.data.emails.length; i++) {
-          var p3 = $('<p>').text('Contact Name: ' + response.data.emails[i].first_name + ' ' + response.data.emails[i].last_name + ', Title: ' + response.data.emails[i].position + " Contact Email: " + response.data.emails[i].value);
-
+          var p3 = $('<p>').text('Contact Name: ' + response.data.emails[i].first_name + ' ' + response.data.emails[i].last_name);
+          var p4 = $('<p>').text('Contact Title: ' + response.data.emails[i].position);
+          var p5 = $('<p>').text('Contact Email: ' + response.data.emails[i].value);
           $('.emails').append(p3);
+          $('.emails').append(p4);
+          $('.emails').append(p5);
         }
         //Log the data in the console
         //  console.log("Domain: " + response.data);
