@@ -1,16 +1,54 @@
 body {
     color: black;
-
 }
 
 header {
     text-align: center;
     padding-top: 2%;
-
 }
 
 .content {
     text-align: center;
+}
 
+#card1 {
+    text-align: left;
+    margin-left: 2%;
+}
+
+#card2 {
+    text-align: left;
+}
+
+#card3 {
+    text-align: left;
+}
+
+#card4 {
+    text-align: left;
+    margin-right: 2%;
+}
+
+.title {
+    font-family: sans-serif;
+}
+.subtitle {
+    font-family: sans-serif;
+}
+.search{
+    font-family: sans-serif;
+    
+    
+}
+#cicon {
+    padding-top: 10%;
+    padding-left: 9%;
+    
+}
+
+#script1 {
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
 
 }
